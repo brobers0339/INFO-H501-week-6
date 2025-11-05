@@ -149,15 +149,16 @@ class Genius:
 
         results = []
 
+
         for artist in search_terms:
-            search_data = self.search(artist)
-            artist_id = self.get_artist_id(search_data)
-            artist_info = self.get_artist(artist_id)
+
+            artist_info = self.get_artist(artist)
 
             artist_data = artist_info.get("response", {}).get("artist", {})
             
             artist_name = artist_data.get('name')
             num_followers = artist_data.get('followers_count')
+            artist_id = artist_data.get('id')
 
             results.append({
                 'search_term' : artist,
